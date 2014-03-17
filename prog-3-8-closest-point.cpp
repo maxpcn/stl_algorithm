@@ -50,4 +50,6 @@ int main ( int argc, char *argv[ ] )
 
 
     cout << cnt << " pairs within " << d << endl;
+
+    delete [ ] a;
 }

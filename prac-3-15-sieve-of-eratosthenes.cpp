@@ -51,4 +51,6 @@ int main( void )
     }
 
     cout << endl;
+
+    delete [ ] a;
 }

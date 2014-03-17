@@ -26,29 +26,30 @@ static const int N = 1000;
 
 int main( void )
 {
-    int i;
+    vector< int > :: size_type i;
 
-    vector< int > *a = new vector< int >( N );
+    //vector< int > *a = new vector< int >( N );
+    vector< int > iVect( N );
 
-    if ( !a ) {
-        cout << "out of memory" << endl;
-        return 0;
+//    if ( !a ) {
+//        cout << "out of memory" << endl;
+//        return 0;
+//    }
+
+    for ( i = 2; i != iVect.size( ); ++i ) {
+        iVect[ i ] = 1;
     }
 
-    for ( i = 2; i < N; i++ ) {
-        a[ i ] = 1;
-    }
-
-    for ( i = 2; i < N; i++ ) {
-        if ( a[ i ] ) {
-            for ( long long j = i; j * i < N; j++ ) {
-                a[ i * j ] = 0;
+    for ( i = 2; i != iVect.size( ); ++i ) {
+        if ( iVect[ i ] ) {
+            for ( vector< int > :: size_type j = i; j * i < iVect.size( ); ++j ) {
+                iVect[ i * j ] = 0;
             }
         }
     }
 
-    for ( i = 2; i < N; i++ ) {
-        if ( a[ i ] ) {
+    for ( i = 2; i != iVect.size( ); ++i ) {
+        if ( iVect[ i ] ) {
             cout << " " << i;
         }
     }

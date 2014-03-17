@@ -57,4 +57,6 @@ int main ( int argc, char *argv[ ] )
     }
 
     cout << RAND_MAX << ":" << rand( );
+
+    delete [ ] f;
 }
