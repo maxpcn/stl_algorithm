@@ -38,16 +38,15 @@ typedef node *xlink;
 int main( int argc, char *argv[ ] )
 {
     int i, N = atoi( argv[ 1 ] );
-    xlink xLinkedList = new node( 1, NULL );
+    xlink xLinkedList = new node( N, NULL );
     xlink xLink = xLinkedList;
 
-    for ( i = 2; i <= N; i++ ) {
+    for ( i = N - 1; i >= 1; i-- ) {
         xLink = ( xLink->next = new node( i, NULL ) );
     }
 
     xLink = xLinkedList;
     xlink xSmallestNode = xLink;
-    xlink xEndNode = xLink;
     
     while ( ( xLink = xLink->next ) != NULL ) {
         if ( xLink->item < xSmallestNode->item ) {
@@ -58,15 +57,10 @@ int main( int argc, char *argv[ ] )
     xLink = xLinkedList;
 
     if ( xSmallestNode != xLinkedList ) {
-        if ( xLink != xSmallestNode ) {
-            while ( xSmallestNode != xLink->next ) {
-                xLink = xLink->next;
-            }
-            xLink->next = xLink->next->next;
+        while ( xSmallestNode != xLink->next ) {
+            xLink = xLink->next;
         }
-        else {
-            xLinkedList = xSmallestNode->next;
-        }
+        xLink->next = xLink->next->next;
 
         xSmallestNode->next = xLinkedList;
     }
