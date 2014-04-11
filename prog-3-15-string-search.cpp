@@ -28,7 +28,7 @@ int main( int argc, char *argv[ ] )
     int i;
     char t;
     char a[ N ], *p = argv[ 1 ];
-    char temp;
+
     for ( i = 0; i < N - 1; a[ i ] = t, i++ ) {
         if ( !cin.get( t ) ) break;
     }
