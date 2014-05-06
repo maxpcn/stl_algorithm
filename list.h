@@ -24,8 +24,8 @@ struct node {
     node *next;
 };				/* ----------  end of struct node  ---------- */
 
-typedef node *link;
-typedef link Node;
+typedef node *xLink;
+typedef xLink Node;
 
 void construct( int );
 Node newNode( int );

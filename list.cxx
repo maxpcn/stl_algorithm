@@ -27,7 +27,7 @@
  */
 class Node
 {
-//    typedef link Node;
+//    typedef xLink Node;
     friend class List;
 
     public:
@@ -67,8 +67,8 @@ class Node
 class List
 {
     public:
-        typedef Node *link;
-        typedef link node;
+        typedef Node *xLink;
+        typedef xLink node;
         typedef int Item;
         /* ====================  LIFECYCLE     ======================================= */
         List ( int N );                             /* constructor      */
@@ -83,6 +83,16 @@ class List
         Item item( ) const
         {
             return xlist->item;
+        }
+
+        node cur( ) const
+        {
+            return xlist;
+        }
+
+        void cur( node x )
+        {
+            xlist = x;
         }
 
         /* ====================  MUTATORS      ======================================= */
@@ -108,9 +118,19 @@ class List
         node insert( int i )
         {
             node t = newNode( i );
-            insert( xlist, t );
+
+            if ( xlist ) {
+                insert( xlist, t );
+            }
             xlist = t;
             return t;
+        }
+
+        node erase( node x )
+        {
+            node next_node = x->next;
+            deleteNode( remove( x ) );
+            return next_node;
         }
 
         node remove( node x )
@@ -122,7 +142,8 @@ class List
 
         node remove( )
         {
-            return remove( xlist );
+            deleteNode( remove( xlist ) );
+            return xlist->next;
         }
 
         /* ====================  OPERATORS     ======================================= */
@@ -138,8 +159,8 @@ class List
         /* ====================  METHODS       ======================================= */
 
         /* ====================  DATA MEMBERS  ======================================= */
-        link freelist;
-        link xlist;
+        xLink freelist;
+        xLink xlist;
 
 }; /* -----  end of class List  ----- */
 
@@ -162,6 +183,12 @@ List::List ( int N )
     xlist = NULL;
 }  /* -----  end of method List::List  (constructor)  ----- */
 
+
+
+List::~List ( )
+{
+    delete [ ] freelist;
+}		/* -----  end of method List::~List  ----- */
 
 //node List::newNode ( int i )
 //{

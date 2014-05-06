@@ -29,7 +29,7 @@ using namespace std;
  */
 class Point
 {
-    friend int operator == ( const Point a, const Point b )
+    friend int operator == ( const Point &a, const Point &b )
     {
         return distance( a, b ) < .001;
     }

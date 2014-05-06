@@ -19,7 +19,7 @@
 #include <cstdlib>
 #include "list.h"
 
-link freelist;
+xLink freelist;
 
 void construct( int N )
 {
@@ -31,43 +31,43 @@ void construct( int N )
 }
 
 
-link newNode( int i )
+xLink newNode( int i )
 {
-    link x = remove( freelist );
+    xLink x = remove( freelist );
     x->item = i;
     x->next = x;
     return x;
 }
 
 
-void deleteNode( link x )
+void deleteNode( xLink x )
 {
     insert( freelist, x );
 }
 
 
-void insert( link x, link t )
+void insert( xLink x, xLink t )
 {
     t->next = x->next;
     x->next = t;
 }
 
 
-link remove( link x )
+xLink remove( xLink x )
 {
-    link t = x->next;
+    xLink t = x->next;
     x->next = t->next;
     return t;
 }
 
 
-link next( link x )
+xLink next( xLink x )
 {
     return x->next;
 }
 
 
-Item item( link x )
+Item item( xLink x )
 {
     return x->item;
 }
