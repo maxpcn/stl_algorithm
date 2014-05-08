@@ -17,7 +17,10 @@
  */
 
 #include <cstdlib>
+#include <iostream>
 #include "list.h"
+
+using namespace std;
 
 xLink freelist;
 
@@ -70,4 +73,17 @@ xLink next( xLink x )
 Item item( xLink x )
 {
     return x->item;
+}
+
+void PrintList( xLink xListPrint )
+{
+    cout << "List:" << endl;
+
+    xLink xListNode = xListPrint;
+    while ( xListNode ) {
+        cout << xListNode->item << "    ";
+        xListNode = xListNode->next;
+    }
+
+    cout << endl;
 }

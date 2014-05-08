@@ -22,6 +22,8 @@ typedef int Item;
 struct node {
     Item item;
     node *next;
+    node( int x, node *t ) : item( x ), next( t ) { }
+    node( void ) { }
 };				/* ----------  end of struct node  ---------- */
 
 typedef node *xLink;
@@ -34,3 +36,4 @@ void insert( Node, Node );
 Node remove( Node );
 Node next( Node );
 Item item( Node );
+void PrintList( Node );
