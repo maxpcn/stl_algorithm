@@ -37,6 +37,7 @@ void construct( int N )
 xLink newNode( int i )
 {
     xLink x = remove( freelist );
+    //xLink x = new node( 1, NULL );
     x->item = i;
     x->next = x;
     return x;
@@ -46,6 +47,7 @@ xLink newNode( int i )
 void deleteNode( xLink x )
 {
     insert( freelist, x );
+//    delete x;
 }
 
 
